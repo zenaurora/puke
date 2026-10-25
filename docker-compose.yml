@@ -1,0 +1,12 @@
+services:
+  holdem:
+    build: .
+    container_name: holdem-night
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      # 管理员（max #33）密码，不设则首次启动自动生成并打印在日志里
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-}
+    restart: unless-stopped
